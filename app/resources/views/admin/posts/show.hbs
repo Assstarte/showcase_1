@@ -1,0 +1,63 @@
+<div class="container mb-5">
+    <h3>Пост #{{post.id}} - {{post.title}}</h3>
+    <form action="" class="form" method="POST">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input value="{{post.title}}" type="text" class="form-control" name="title" id="title" disabled="true">
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea name="description" class="form-control" id="description"
+                disabled="true">{{post.description}}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="h1">H1</label>
+            <input value="{{post.h1}}" type="text" class="form-control" name="h1" id="h1" disabled="true">
+        </div>
+        <div class="form-group">
+            <label for="slug">Slug</label>
+            <input value="{{post.slug}}" type="text" class="form-control" name="slug" id="slug" disabled="true">
+        </div>
+
+        <div class="form-group">
+            <label for="link">LINK</label>
+            <input type="text" value={{post.link}} class="form-control" name="link" id="link" placeholder="Link"
+                disabled="true">
+        </div>
+        <div class="form-group">
+            <label for="anchor">Anchor</label>
+            <input value="{{post.anchor}}" type="text" class="form-control" name="anchor" id="anchor"
+                placeholder="Anchor" disabled="true">
+        </div>
+        <div class="form-group">
+            <label for="category">Category</label>
+            <select name="category" id="category" disabled="true" class="custom-select">
+                {{#each categories}}
+                <option {{#compare id '===' ../post.categoryId }} selected {{/compare}}value="{{id}}">{{name}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="text">Content</label>
+            <textarea name="text" class="form-control" id="text" disabled="true" rows="10">{{post.text}}</textarea>
+        </div>
+
+        <a href="{{postUrl post.slug}}">
+            <button type="button" class="btn btn-secondary">
+                Перейти
+            </button>
+        </a>
+
+        <a href="{{adminItemUrl 'posts'post.id}}/edit">
+            <button type="button" class="btn btn-default btn-warning">Редактировать</button>
+        </a>
+
+    </form>
+
+    <form class="d-inline" action="{{adminItemUrl 'posts' post.id}}/?_method=DELETE" method="POST">
+        <button class="btn btn-md btn-danger mt-4" type="submit">
+            Удалить
+        </button>
+    </form>
+
+</div>

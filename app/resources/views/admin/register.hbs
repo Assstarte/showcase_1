@@ -1,0 +1,61 @@
+<div class="container mb-5">
+    {{#if error}}
+    <div class="row">
+        <div class="col d-flex justify-content-center">
+            <div class="rounded w-50 p-4 bg-danger text-white">
+                {{error.message}}
+            </div>
+        </div>
+    </div>
+    {{/if}}
+    <div class="row mt-2">
+        <div class="col d-flex justify-content-center">
+            <div class="w-50">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h4>Sign Up</h4>
+                        </div>
+                        <form action="{{adminUrl 'register'}}" method="POST" class="needs-validation">
+                            <div class="form-group signup-form">
+                                <label for="login">Login</label>
+                                <input type="text" class="form-control {{#if inputError.login}}is-invalid{{/if}}"
+                                    id="login" name="login" required placeholder="Login" {{#if correctFields.login}}
+                                    value="{{correctFields.login}}" {{/if}}>
+                                <div class="invalid-feedback">
+                                    <span>Has to be filled & Cannot consist of spacebars only</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" class="form-control {{#if inputError.name}}is-invalid{{/if}}"
+                                    id="name" required placeholder="Your Name" name="name" {{#if correctFields.name}}
+                                    value="{{correctFields.name}}" {{/if}}>
+                                <div class="invalid-feedback">
+                                    <span>Has to be filled & Cannot consist of spacebars only</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control {{#if inputError.password}}is-invalid{{/if}}"
+                                    id="password" required placeholder="Password" name="password">
+                                <small id="reminder" class="form-text text-muted">
+                                    Please make sure to enter secure long
+                                    password
+                                </small>
+                                <div class="invalid-feedback">
+                                    <span>Has to be filled, contain >7 characters & Cannot consist of spacebars
+                                        only</span>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-success">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,75 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: ./app
+    image: ${APP_NAME}/app
+    container_name: ${APP_NAME}_app
+    restart: always
+    command: yarn ${APP_ENV}
+    volumes:
+      - ./app:/usr/app
+      - /usr/app/node_modules
+      - ./storage:/usr/app/public/storage
+    env_file:
+      - .env
+    ports:
+      - ${APP_LOCAL_PORT}:${APP_CONTAINER_PORT}
+    networks:
+      backend:
+        ipv4_address: ${APP_HOST}
+
+  api:
+    build:
+      context: ./api
+    image: ${APP_NAME}/api
+    container_name: ${APP_NAME}_api
+    restart: always
+    command: yarn ${APP_ENV}
+    volumes:
+      - ./api:/usr/api
+      - /usr/api/node_modules
+      - ./storage:/usr/api/storage
+    env_file:
+      - .env
+    ports:
+      - ${API_LOCAL_PORT}:${API_CONTAINER_PORT}
+    networks:
+      backend:
+        ipv4_address: ${API_HOST}
+
+
+  postgres:
+    image: postgres:11-alpine
+    container_name: ${APP_NAME}_postgres
+    restart: always
+    ports:
+      - ${DB_LOCAL_PORT}:${DB_PORT}
+    environment:
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data:rw
+    networks:
+      backend:
+        ipv4_address: ${DB_HOST}
+
+  redis:
+    image: redis:5-alpine
+    container_name: ${APP_NAME}_redis
+    restart: always
+    ports:
+      - ${REDIS_LOCAL_PORT}:${REDIS_CONTAINER_PORT}
+    networks:
+      backend:
+        ipv4_address: ${REDIS_HOST}
+
+
+networks:
+  backend:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: ${SUBNET}

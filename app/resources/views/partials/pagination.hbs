@@ -1,0 +1,33 @@
+{{#if paginator.hasPagination}}
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item">
+            <a class="page-link" style="margin-right: 2em;" href="{{paginator.firstPageUrl}}">
+                Первая
+            </a>
+        </li>
+        <li class="page-item {{#unless paginator.previousPage}}disabled{{/unless}}">
+            <a class="page-link" href="{{paginator.previousPageUrl}}">
+                Назад
+            </a>
+        </li>
+        {{#each paginator.pages  as |value key| }}
+        <li class="page-item {{#compare key '==' ../paginator.currentPage}}active{{/compare}}">
+            <a class="page-link" href="{{value}}">
+                {{key}}
+            </a>
+        </li>
+        {{/each}}
+        <li class="page-item {{#unless paginator.nextPage}}disabled{{/unless}}">
+            <a class="page-link" href="{{paginator.nextPageUrl}}">
+                Вперед
+            </a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" style="margin-left: 2em;"  href="{{paginator.lastPageUrl}}">
+                Последняя
+            </a>
+        </li>
+    </ul>
+</nav>
+{{/if}}

@@ -1,0 +1,37 @@
+<nav class="navbar navbar-default navbar-fixed-top" id="toolbar">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" id="navbar_show">
+                <span class="icon icon-menu_button"></span>
+            </button>
+            <a class="navbar-brand" href="{{homeUrl}}"></a>
+        </div>
+        <div class="navbar_overlay" id="navbar_overlay"></div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <div class="hidden-lg sidebar-header">
+                <span class="icon icon-language"></span>
+                <a class="ru active">Русский</a>
+                <button class="navbar-toggle" id="navbar_hide">
+                    <span class="icon icon-menu_button_close"></span>
+                </button>
+            </div>
+            <div class="scroll_menu">
+                <ul class="nav navbar-nav">
+                    {{#each categories}}
+                    <li class="dropdown menu_news ">
+                        <a href="{{categoryUrl slug}}">{{name}}</a>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+        <form class="search visible-lg" id="search_box" action="/search" method="POST">
+            <div class="container_search">
+                <input type="text" id="search_input" placeholder="Поисковый запрос" name="query">
+            </div>
+            <button class="search_btn" id="search_btn">
+                <span class="icon icon-search_button"></span>
+            </button>
+        </form>
+    </div>
+</nav>

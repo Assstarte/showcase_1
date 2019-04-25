@@ -1,0 +1,7 @@
+.idea
+.vscode
+.env
+storage
+*DS_Store
+passwd
+node_modules

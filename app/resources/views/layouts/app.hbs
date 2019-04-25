@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <title>{{title}}</title>
+    <meta name="description" content="{{description}}">
+    <link rel="icon" href="{{ asset 'favicon.ico' }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ asset 'css/pagination.css'}}">
+    <link rel="stylesheet" href="{{ asset 'css/style.css' }}">
+</head>
+
+<body class="HP ru">
+    {{>header}}
+    <main class="container">
+        <div class="f-row main-row">
+            <div class="f-col f-col-lg-8">
+                {{{body}}}
+            </div>
+            {{>aside}}
+        </div>
+    </main>
+    <div id="branding-alert"></div>
+    {{>footer}}
+    <a id="scroll-top" class="scroll-top"></a>
+    <script src="{{ asset 'js/script.js'}}"></script>
+</body>
+
+</html>

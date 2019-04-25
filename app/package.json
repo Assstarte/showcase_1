@@ -1,0 +1,42 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@gitlab.com:seo-sites/onlineindex.biz.git",
+  "license": "MIT",
+  "scripts": {
+    "development": "node_modules/.bin/nodemon index.js",
+    "production": "node index.js",
+    "migrate": "node_modules/.bin/sequelize db:migrate",
+    "migrate-refresh": "node_modules/.bin/sequelize db:migrate:undo:all && node_modules/.bin/sequelize db:migrate",
+    "seed": "node_modules/.bin/sequelize db:seed:all",
+    "lint": "node_modules/.bin/eslint .",
+    "test": "node_modules/.bin/mocha --exit"
+  },
+  "dependencies": {
+    "bcrypt": "^3.0.4",
+    "bluebird": "^3.5.3",
+    "body-parser": "^1.18.3",
+    "cookie-session": "^1.3.3",
+    "dotenv": "^7.0.0",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.2",
+    "handlebars-helpers": "^0.10.0",
+    "method-override": "^3.0.0",
+    "needle": "^2.2.4",
+    "pg": "^7.8.2",
+    "pg-hstore": "^2.3.2",
+    "redis": "^2.8.0",
+    "sequelize": "^4.43.0",
+    "sequelize-cli": "^5.4.0",
+    "slugify": "^1.3.4"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-files": "^1.4.0",
+    "eslint": "^5.15.1",
+    "faker": "^4.1.0",
+    "mocha": "^6.0.2",
+    "nodemon": "^1.18.10"
+  }
+}

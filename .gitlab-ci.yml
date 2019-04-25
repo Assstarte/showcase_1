@@ -1,0 +1,22 @@
+stages:
+  - test
+
+test:code:
+  image: node:10-alpine
+  stage: test
+  before_script:
+    - apk --no-cache add --virtual builds-deps build-base python
+    - cd app
+    - yarn install
+  script:
+    - yarn lint
+
+test:test:
+  image: node:10-alpine
+  stage: test
+  before_script:
+    - apk --no-cache add --virtual builds-deps build-base python
+    - cd app
+    - yarn install
+  script:
+    - yarn test

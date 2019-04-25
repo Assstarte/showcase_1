@@ -1,0 +1,60 @@
+<header id="header" class="mb-3">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="{{adminHomeUrl}}">SEO PANEL</a>
+            <div class="navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    {{#if dashboard}}
+                    <li class="nav-item ml-2">
+                        <a class="nav-link" href="{{adminUrl 'categories'}}">
+                            Categories
+                        </a>
+                    </li>
+                    <li class="nav-item ml-2">
+                        <a class="nav-link" href="{{adminUrl 'posts'}}">
+                            Posts
+                        </a>
+                    </li>
+                    <li class="nav-item ml-2">
+                        <a class="nav-link" href="{{adminUrl 'links'}}">
+                            Links
+                        </a>
+                    </li>
+                    {{else}}
+                    <li class="nav-item">
+                        <a href="{{adminHomeUrl}}">
+                            <button class="btn btn-success">
+                                Sign In
+                            </button>
+                        </a>
+                    </li>
+                    <li class="nav-item ml-2">
+                        <a href="{{adminUrl 'register'}}">
+                            <button class="btn btn-dark">
+                                Sign Up
+                            </button>
+                        </a>
+                    </li>
+                    {{/if}}
+                </ul>
+                {{#if dashboard}}
+                <form class="form-inline my-2 my-lg-0" action="/admin/search" method="POST">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query">
+                    <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+                <ul class="navbar-nav ml-3">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{username}}
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{adminUrl 'logout'}}">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+                {{/if}}
+            </div>
+        </div>
+    </nav>
+</header>

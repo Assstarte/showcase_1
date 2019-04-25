@@ -1,0 +1,46 @@
+<div class="container mb-5">
+    <h3>Создать Категорию</h3>
+    <form action="{{adminUrl 'categories'}}" class="form needs-validation" method="POST">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" required class="form-control {{#if inputError.title}}is-invalid{{/if}}" name="title"
+                id="title" placeholder="New Category" {{#if correctFields.title}} value="{{correctFields.title}}"{{/if}}>
+            <div class="invalid-feedback">
+                <span>Has to be filled & Cannot consist of spacebars only</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control {{#if inputError.name}}is-invalid{{/if}}" required name="name"
+                id="name" placeholder="Name" {{#if correctFields.name}} value="{{correctFields.name}}"{{/if}}>
+            <div class="invalid-feedback">
+                <span>Has to be filled & Cannot consist of spacebars only</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea name="description" class="form-control {{#if inputError.description}}is-invalid{{/if}}"
+                id="description">{{#if correctFields.description}}{{correctFields.description}}{{/if}}</textarea>
+            <div class="invalid-feedback">
+                <span>Has to be filled & Cannot consist of spacebars only</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="h1">H1</label>
+            <input type="text" class="form-control {{#if inputError.h1}}is-invalid{{/if}}" name="h1" required id="h1"
+                placeholder="H1" {{#if correctFields.h1}} value="{{correctFields.h1}}"{{/if}}>
+            <div class="invalid-feedback">
+                <span>Has to be filled & Cannot consist of spacebars only</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="slug">SLUG</label>
+            <input type="text" class="form-control {{#if inputError.slug}}is-invalid{{/if}}" name="slug" required
+                id="slug" placeholder="Slug" {{#if correctFields.slug}} value="{{correctFields.slug}}"{{/if}}>
+            <div class="invalid-feedback">
+                <span>Has to be filled & Cannot consist of spacebars only</span>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-default btn-success">Create</button>
+    </form>
+</div>

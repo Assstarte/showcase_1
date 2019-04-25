@@ -1,0 +1,23 @@
+<footer class="footer">
+    <div class="container">
+        <button class="footer_menu_open hidden-lg" id="open_footer">Список разделов <span
+                class="icon icon-arrow_small_down"></span>
+        </button>
+        <div class="footer_dropdown_menu">
+            <nav class="footer_menu">
+                <ul>
+                    {{#each categories}}
+                    <li><a href="{{ asset 'categories/'}}{{slug}}">{{name}}</a></li>
+                    {{/each}}
+                </ul>
+            </nav>
+            <button class="footer_menu_hide hidden-lg" id="hide_footer">Свернуть <span
+                    class="icon icon-arrow_small_up"></span>
+            </button>
+        </div>
+        <div class="privacy">
+            <p>&copy; {{ moment 'YYYY' }} Все права защищены.
+            </p>
+        </div>
+    </div>
+</footer>

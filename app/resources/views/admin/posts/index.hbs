@@ -1,0 +1,59 @@
+<div class="container mb-5">
+    <div class="row mb-2">
+        <div class="col d-flex justify-content-between">
+            <h3 class="m-0">Посты</h3>
+            <a href="{{adminUrl 'posts/create'}}">
+                <button type="button" class="btn btn-success">
+                    Добавить Пост
+                </button>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Название</th>
+                        <th scope="col" class="text-center">Редактирование</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each posts}}
+                    <tr>
+                        <th scope="row">
+                            {{id}}
+                        </th>
+                        <td>
+                            <a href="{{adminItemUrl 'posts' id}}">{{title}}</a>
+                        </td>
+                        <td class="text-center">
+                            <a href="{{postUrl slug}}">
+                                <button class="btn btn-sm btn-secondary">
+                                    Просмотр
+                                </button>
+                            </a>
+                            <a href="{{adminItemUrl 'posts'id}}/edit">
+                                <button class="btn btn-sm btn-primary">
+                                    Редактирование
+                                </button>
+                            </a>
+                            <form class="d-inline" action="{{adminItemUrl 'posts' id}}/?_method=DELETE" method="POST">
+                                <button class="btn btn-sm btn-danger" type="submit">
+                                    Удалить
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {{>pagination}}
+        </div>
+    </div>
+</div>

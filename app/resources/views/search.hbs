@@ -1,0 +1,51 @@
+<div class="b_header">
+    <h1>Результаты поиска</h1>
+</div>
+<div id="feed" class="b_articles">
+    {{#if noresults}}
+    <h2>Нет результатов по данному запросу</h2>
+    {{/if}}
+    {{#each posts}}
+    <div class="media" data-id="256128">
+        <div class="media-left">
+            <a href="{{postUrl slug}}" style="background:rgba(185,179,182,0.6);">
+                {{#if hasImage}}
+                <img src="{{postImgPath id}}" class="visible-xs-block" alt="{{title}}">
+                <img src="{{postImgPath id}}" class="hidden-xs" alt="{{title}}">
+                {{else}}
+                <img src="{{noImgPath}}" class="visible-xs-block" alt="{{title}}">
+                <img src="{{noImgPath}}" class="hidden-xs" alt="{{title}}">
+                {{/if}}
+            </a>
+        </div>
+        <div class="media-body">
+            <h2 class="media-heading">
+                <a href="{{postUrl slug}}">
+                    {{title}}
+                </a>
+            </h2>
+            <a class="label label-main hidden-xs" href="{{categoryUrl category.slug}}">
+                {{ category.name }}
+            </a>
+            <span class="media_date hidden-xs">
+                {{ moment publishedAt format='DD-MM-YYYY | HH:mm:ss' }}
+                {{#if hasLink}}
+                <a href="{{link}}">
+                    {{anchor}}
+                </a>
+                {{/if}}
+            </span>
+            <p class="hidden-xs">
+                <a href="{{postUrl slug}}">
+                    {{description}}
+                </a>
+            </p>
+        </div>
+    </div>
+    {{/each}}
+    <div class="row">
+        <div class="col">
+            {{>pagination}}
+        </div>
+    </div>
+</div>

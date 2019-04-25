@@ -1,0 +1,50 @@
+<div class="container mb-5">
+    {{#if successAfterRegister}}
+    <div class="row">
+        <div class="col d-flex justify-content-center">
+            <div class="rounded w-50 p-4 bg-success text-white">
+                Account was created successfully
+            </div>
+        </div>
+    </div>
+    {{/if}}
+    {{#if error}}
+    <div class="row">
+        <div class="col d-flex justify-content-center">
+            <div class="rounded w-50 p-4 bg-danger text-white">
+                {{error.message}}
+            </div>
+        </div>
+    </div>
+    {{/if}}
+    <div class="row mt-2">
+        <div class="col d-flex justify-content-center">
+            <div class="w-50">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h4>Sign in</h4>
+                        </div>
+                        <form action="{{adminUrl 'login'}}" method="POST">
+                            <div class="form-group signup-form">
+                                <label for="login">Login</label>
+                                <input type="text" class="form-control" id="login" name="login"
+                                    placeholder="Enter Login">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" placeholder="Enter Password"
+                                    name="password">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-success">Login</button>
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+</div>

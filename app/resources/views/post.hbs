@@ -1,0 +1,41 @@
+<div class="b_header">
+    <h1>{{post.h1}}</h1>
+</div>
+
+<div id="feed" class="b_articles">
+    <article itemscope="" itemtype="http://schema.org/NewsArticle">
+
+        <header>
+
+            <div class="row metadata hidden-xs">
+
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                    <div class="media">
+                        {{#if post.hasImage}}
+                        <img style="height: 100%" src="{{postImgPath post.id}}" alt="{{post.title}}">
+                        {{else}}
+                        <img style="height: 100%" src="{{noImgPath}}" alt="{{post.title}}">
+                        {{/if}}
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <a class="label label-main hidden-xs" href="{{categoryUrl post.category.slug}}">
+                        {{ post.category.name }}
+                    </a>
+                    <div class="media_date">
+                        {{ moment post.publishedAt format='DD-MM-YYYY | HH:mm:ss' }}
+                    </div>
+                </div>
+
+            </div>
+
+        </header>
+
+        <section class="content" itemprop="articleBody">
+            <p>{{post.text}}</p>
+        </section>
+
+        <a href="{{post.link}}">{{post.anchor}}</a>
+    </article>
+</div>
